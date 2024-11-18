@@ -8,6 +8,10 @@ fun main(args: Array<String>) {
             println("Aucun argument. Saisissez du texte (tapez 'exit' pour quitter) :")
             while (true) {
                 val input = readln()
+                // turn the input to a list of words
+                val words = input.split(" ")
+                // print the words
+                println("Liste des mots : $words")
                 if (input.lowercase() == "exit") break
                 println("Vous avez saisi : $input")
             }
@@ -19,9 +23,13 @@ fun main(args: Array<String>) {
                 return
             }
             val file = File(fileName)
+            val fileContent: String
             if (file.exists() && file.isFile) {
                 println("Contenu du fichier $fileName :")
+                fileContent = file.readText();
                 println(file.readText())
+                val wordsList = fileContent.split(" ")
+                println("Liste des mots : $wordsList")
             } else {
                 println("Erreur : le fichier $fileName n'existe pas ou n'est pas valide.")
             }
